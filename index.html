@@ -6,23 +6,45 @@
     <body style="background-color:#222222;">
         <header><h1 style="color:white; text-align:center; font-size:300%; font-family:asap;"><strong>Wowzers!</strong></h1></header>
 
-        <section><p style="color:white;">This is MY $8 website that I made without ANY robot (don need chagtp for this work of pure artistic talent)</p></section>
+        <section><p style="color:white; text-align:center;">This is MY $8 website that I made without ANY robot (don need chagtp for this work of pure artistic talent)</p></section>
         
-        <aside><p style="color:white;">Testing this</p></aside>
+        <aside><p style="color:white; text-align:center;">Testing this</p></aside>
 
-        <nav><a style="text-align:center;" href="https://deltav0.itch.io/">
-            <img src="/images/itch.png" alt="Clickable Image" width="64" height="64" title="My Itch.io">
+        <nav><a href="https://deltav0.itch.io/">
+            <img style="text-align:center;" src="/images/itch.png" alt="Clickable Image" width="64" height="64" title="My Itch.io">
             </a>
-        <a style="text-align:center;" href="https://github.com/DeltaV0">
-            <img src="/images/git.png" alt="Clickable Image" width="64" height="64" title="My Github">
+        <a href="https://github.com/DeltaV0">
+            <img style="text-align:center;" src="/images/git.png" alt="Clickable Image" width="64" height="64" title="My Github">
             </a>
-        <a style="text-align:center;" href="https://bsky.app/profile/deltav0.bsky.social">
-            <img src="/images/bsky.png" alt="Clickable Image" width="73" height="64" title="My Bluesky">
+        <a href="https://bsky.app/profile/deltav0.bsky.social">
+            <img  style="text-align:center;" src="/images/bsky.png" alt="Clickable Image" width="73" height="64" title="My Bluesky">
             </a>
-        <a style="text-align:center;" href="https://www.youtube.com/@DeltaV_">
-            <img src="/images/yt_icon_red_digital.png" alt="Clickable Image" width="75" height="64" title="My Youtube">
+        <a href="https://www.youtube.com/@DeltaV_">
+            <img style="text-align:center;" src="/images/yt_icon_red_digital.png" alt="Clickable Image" width="75" height="64" title="My Youtube">
             </a>
         </nav>
+
+        <canvas id="myCanvas" width="256" height="256" style="text-align:center;">
+        </canvas>
+
+        <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var num = 0;
+        var num2 = 0;
+
+        function requestAnimFrame() {
+        
+        num2 = num2 + 1;
+        num = Math.sin(num2 * 0.001) * 25;
+
+        ctx.clearRect(0, 0, 256, 256);
+        ctx.moveTo(0, 0);
+        ctx.lineTo(200, num);
+        ctx.stroke();
+        } 
+        
+        </script> 
         
     </body>
 </html>
