@@ -33,7 +33,7 @@
         var num = 0;
         var num2 = 0;
 
-        function requestAnimFrame() {
+        function requestAnimFrame(timestamp) {
         
         num2 = num2 + 1;
         num = Math.sin(num2 * 0.001) * 50;
@@ -42,6 +42,8 @@
         ctx.moveTo(0, 0);
         ctx.lineTo(200, num);
         ctx.stroke();
+        requestAnimationFrame(requestAnimFrame); 
+
         } 
         requestAnimationFrame(requestAnimFrame); 
         
