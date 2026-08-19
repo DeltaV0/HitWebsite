@@ -8,51 +8,99 @@
 
         <section><p style="color:white; text-align:center;">This is MY $8 website that I made without ANY robot (don need chagtp for this work of pure artistic talent)</p></section>
         
-        <aside><p style="color:white; text-align:center;">Testing this</p></aside>
+        <aside><p style="color:white; text-align:center;">This is VERY wip btw dont expect anything fancy i'm doing all my testing in prod</p></aside>
 
         <nav><a href="https://deltav0.itch.io/">
-            <img style="text-align:center;" src="/images/itch.png" alt="Clickable Image" width="64" height="64" title="My Itch.io">
+            <img style="margin: 50px;" src="/images/itch.png" alt="Clickable Image" width="64" height="64" title="My Itch.io">
             </a>
         <a href="https://github.com/DeltaV0">
-            <img style="text-align:center;" src="/images/git.png" alt="Clickable Image" width="64" height="64" title="My Github">
+            <img style="margin: 50px;" src="/images/git.png" alt="Clickable Image" width="64" height="64" title="My Github">
             </a>
         <a href="https://bsky.app/profile/deltav0.bsky.social">
-            <img  style="text-align:center;" src="/images/bsky.png" alt="Clickable Image" width="73" height="64" title="My Bluesky">
+            <img  style="margin: 50px;" src="/images/bsky.png" alt="Clickable Image" width="73" height="64" title="My Bluesky">
             </a>
         <a href="https://www.youtube.com/@DeltaV_">
-            <img style="text-align:center;" src="/images/yt_icon_red_digital.png" alt="Clickable Image" width="75" height="64" title="My Youtube">
+            <img style="margin: 50px;" src="/images/yt_icon_red_digital.png" alt="Clickable Image" width="75" height="64" title="My Youtube">
             </a>
         </nav>
+        
 
-        <canvas id="myCanvas" width="256" height="256" style="text-align:center;">
+        <canvas id="myCanvas" width="512" height="512" style="
+    padding: 0;
+    margin: auto;
+    display: block;
+    width: 512px;
+    height: 512px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; image-rendering: pixelated; image-rendering: crisp-edges;">
         </canvas>
 
         <script>
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
-        var num = 0;
-        var num2 = 0;
+        var timer = 0;
+        ctx.CanvasImageSmoothing = false;
+        ctx.translate(0.5, 0.5)
 
-        var lastTime = 0;
 
-        function requestAnimFrame(timestamp) {
+        var then = 0;
+        var time;
+        var deltaTime;
+
+        var decalSize = 64;
+
+        function requestAnimFrame(time) {
+        
+        requestAnimationFrame(requestAnimFrame);
+        deltaTime = time - then; 
 
         
         
-        num2 = num2 + 1;
-        num = Math.sin(num2 * 0.025) * 50;
 
-        ctx.clearRect(0, 0, c.width, c.height);
-        ctx.moveTo(0, 0);
-        ctx.lineTo(200, num);
-        ctx.stroke();
+        if ( deltaTime > 20) {
+            
+            then = time - (deltaTime % 20);
 
-        if ( (timestamp - lastTime) < 20) {
-            requestAnimationFrame(requestAnimFrame);
-            return;
+            timer = timer + 0.01;
+
+            ctx.beginPath();
+            ctx.clearRect(0, 0, c.width, c.height);
+            ctx.lineWidth = 5;
+            ctx.moveTo(decalSize * Math.cos(timer) + c.width/2, decalSize * Math.sin(timer) + c.height/2);
+           // ctx.lineTo(8 * Math.cos(num) + 128, 8 * Math.sin(num) + 128);
+            ctx.lineTo(decalSize * Math.cos(timer + (Math.PI * 2)/3) + c.width/2, decalSize * Math.sin(timer + (Math.PI * 2)/3) + c.height/2);
+            
+            ctx.lineTo(1.5 * decalSize * Math.cos(timer + (Math.PI * 2)/3) + c.width/2, 1.5 * decalSize * Math.sin(timer + (Math.PI * 2)/3) + c.height/2);
+            ctx.lineTo(0.5 * decalSize * Math.cos(timer + (Math.PI * 2)/3) + c.width/2, 0.5 * decalSize * Math.sin(timer + (Math.PI * 2)/3) + c.height/2);
+            ctx.lineTo(decalSize * Math.cos(timer + (Math.PI * 2)/3) + c.width/2, decalSize * Math.sin(timer + (Math.PI * 2)/3) + c.height/2);
+
+
+            ctx.lineTo(decalSize * Math.cos(timer + 2 * (Math.PI * 2)/3) + c.width/2, decalSize * Math.sin(timer + 2 * (Math.PI * 2)/3) + c.height/2);
+            ctx.lineTo(1.5*decalSize * Math.cos(timer + 2 * (Math.PI * 2)/3) + c.width/2, 1.5*decalSize * Math.sin(timer + 2 * (Math.PI * 2)/3) + c.height/2);
+            ctx.lineTo(0.5*decalSize * Math.cos(timer + 2 * (Math.PI * 2)/3) + c.width/2, 0.5*decalSize * Math.sin(timer + 2 * (Math.PI * 2)/3) + c.height/2);
+            ctx.lineTo(decalSize * Math.cos(timer + 2 * (Math.PI * 2)/3) + c.width/2, decalSize * Math.sin(timer + 2 * (Math.PI * 2)/3) + c.height/2);
+
+
+            
+            ctx.lineTo(decalSize * Math.cos(timer) + c.width/2, decalSize * Math.sin(timer) + c.height/2);
+            ctx.lineTo(1.5 * decalSize * Math.cos(timer) + c.width/2, 1.5*decalSize * Math.sin(timer) + c.height/2);
+            ctx.lineTo(0.5*decalSize * Math.cos(timer) + c.width/2, 0.5*decalSize * Math.sin(timer) + c.height/2);
+            ctx.lineTo(decalSize * Math.cos(timer) + c.width/2, decalSize * Math.sin(timer) + c.height/2);
+
+            //ctx.moveTo(c.width/2 + 1, c.height/2 - 1);
+            ctx.strokeRect(c.width/2, c.height/2,1,1);
+
+
+
+
+            ctx.strokeStyle = "white";
+            ctx.stroke();
+
         }
 
-        lastTime = time;
 
         } 
         requestAnimationFrame(requestAnimFrame); 
