@@ -29,12 +29,12 @@
         </nav>
         
 
-        <canvas id="myCanvas" width="512" height="512" style="
+        <canvas id="myCanvas" width="1028" height="1028" style="
     padding: 0;
     margin: auto;
     display: block;
-    width: 512px;
-    height: 512px;
+    width: 1028px;
+    height: 1028px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -45,7 +45,7 @@
         <script>
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
-        var timer = 0;
+        var timer = Math.random() * 25;
         ctx.CanvasImageSmoothing = false;
         ctx.translate(0.5, 0.5)
 
@@ -55,6 +55,22 @@
         var deltaTime;
 
         var decalSize = 64;
+
+        var pointsTheta = [1,1,1,1];
+        var pointsDist = [1,1,1,1];
+        var pointsSMA = [Math.random() * 10,Math.random() * 10,Math.random() * 10,Math.random() * 10];
+        var pointsOffset = [Math.random(),Math.random(),Math.random(),Math.random()];
+        var pointsE = [Math.random(),Math.random(),Math.random(),Math.random()];
+
+
+        for(let i = 0; i < 50; i++){
+            pointsTheta[i] = Math.random() * Math.PI * 2;
+            pointsDist[i] = 0;
+            pointsSMA[i] = Math.random() * 10 + 5;
+            pointsOffset[i] = Math.random() * Math.PI * 2;
+            pointsE[i] = Math.random() * 0.75;
+        }
+
 
         function requestAnimFrame(time) {
         
@@ -71,14 +87,17 @@
             timer = timer + 0.01;
 
             ctx.beginPath();
+            ctx.lineJoin = "round";
             ctx.clearRect(0, 0, c.width, c.height);
             ctx.lineWidth = 5;
+
             ctx.moveTo(decalSize * Math.cos(timer) + c.width/2, decalSize * Math.sin(timer) + c.height/2);
-           // ctx.lineTo(8 * Math.cos(num) + 128, 8 * Math.sin(num) + 128);
+
             ctx.lineTo(decalSize * Math.cos(timer + (Math.PI * 2)/3) + c.width/2, decalSize * Math.sin(timer + (Math.PI * 2)/3) + c.height/2);
-            
+
             ctx.lineTo(1.5 * decalSize * Math.cos(timer + (Math.PI * 2)/3) + c.width/2, 1.5 * decalSize * Math.sin(timer + (Math.PI * 2)/3) + c.height/2);
             ctx.lineTo(0.5 * decalSize * Math.cos(timer + (Math.PI * 2)/3) + c.width/2, 0.5 * decalSize * Math.sin(timer + (Math.PI * 2)/3) + c.height/2);
+           
             ctx.lineTo(decalSize * Math.cos(timer + (Math.PI * 2)/3) + c.width/2, decalSize * Math.sin(timer + (Math.PI * 2)/3) + c.height/2);
 
 
@@ -87,15 +106,33 @@
             ctx.lineTo(0.5*decalSize * Math.cos(timer + 2 * (Math.PI * 2)/3) + c.width/2, 0.5*decalSize * Math.sin(timer + 2 * (Math.PI * 2)/3) + c.height/2);
             ctx.lineTo(decalSize * Math.cos(timer + 2 * (Math.PI * 2)/3) + c.width/2, decalSize * Math.sin(timer + 2 * (Math.PI * 2)/3) + c.height/2);
 
-
             
             ctx.lineTo(decalSize * Math.cos(timer) + c.width/2, decalSize * Math.sin(timer) + c.height/2);
             ctx.lineTo(1.5 * decalSize * Math.cos(timer) + c.width/2, 1.5*decalSize * Math.sin(timer) + c.height/2);
             ctx.lineTo(0.5*decalSize * Math.cos(timer) + c.width/2, 0.5*decalSize * Math.sin(timer) + c.height/2);
             ctx.lineTo(decalSize * Math.cos(timer) + c.width/2, decalSize * Math.sin(timer) + c.height/2);
 
-            //ctx.moveTo(c.width/2 + 1, c.height/2 - 1);
             ctx.strokeRect(c.width/2, c.height/2,1,1);
+
+         /*   var off = Math.sin(timer * 2.125) * 3;
+            var off2 = Math.cos(timer * 1.25) * 3;
+            var speed = 3;
+            ctx.moveTo(off * decalSize * Math.cos(timer * speed + 1 * (Math.PI * 2)/6) + c.width/2, off2 * decalSize * Math.sin(timer * speed + 1 * (Math.PI * 2)/6) + c.height/2);
+            ctx.lineTo(off * decalSize * Math.cos(timer * speed + 1 * (Math.PI * 2)/6) + c.width/2, off2 * decalSize * Math.sin(timer * speed + 1 * (Math.PI * 2)/6) + c.height/2);
+            ctx.lineTo(off * decalSize * Math.cos(timer * speed + 2 * (Math.PI * 2)/6) + c.width/2, off2 * decalSize * Math.sin(timer * speed + 2 * (Math.PI * 2)/6) + c.height/2);
+            ctx.lineTo(off * decalSize * Math.cos(timer * speed + 3 * (Math.PI * 2)/6) + c.width/2, off2 * decalSize * Math.sin(timer * speed + 3 * (Math.PI * 2)/6) + c.height/2);
+            ctx.lineTo(off * decalSize * Math.cos(timer * speed + 4 * (Math.PI * 2)/6) + c.width/2, off2 * decalSize * Math.sin(timer * speed + 4 * (Math.PI * 2)/6) + c.height/2);
+            ctx.lineTo(off * decalSize * Math.cos(timer * speed + 5 * (Math.PI * 2)/6) + c.width/2, off2 * decalSize * Math.sin(timer * speed + 5 * (Math.PI * 2)/6) + c.height/2);
+            ctx.lineTo(off * decalSize * Math.cos(timer * speed + 6 * (Math.PI * 2)/6) + c.width/2, off2 * decalSize * Math.sin(timer * speed + 6 * (Math.PI * 2)/6) + c.height/2);
+            ctx.lineTo(off * decalSize * Math.cos(timer * speed + 1 * (Math.PI * 2)/6) + c.width/2, off2 * decalSize * Math.sin(timer * speed + 1 * (Math.PI * 2)/6) + c.height/2);
+*/
+            for(let i = 0; i < pointsTheta.length; i++){
+                pointsDist[i] = (pointsSMA[i] * (1-Math.pow(pointsE[i], 2)))/(1+pointsE[i]*Math.cos(pointsTheta[i]));
+                pointsTheta[i] += (1/Math.pow(pointsDist[i],2));
+               ctx.strokeRect(Math.cos(pointsTheta[i] + pointsOffset[i]) * pointsDist[i] * 25 + c.width/2, Math.sin(pointsTheta[i] + pointsOffset[i]) * pointsDist[i] * 25 + c.height/2,1,1);
+            }
+            
+
 
 
 
