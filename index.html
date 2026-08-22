@@ -21,27 +21,28 @@
         </nav>
         
 
-        <canvas id="myCanvas" width="1028" height="1028" style="
+        <canvas id="grav" width="512" height="1028" style="
     padding: 0;
     margin: auto;
+    align-items: center;
+    text-align:center;
     display: block;
-    width: 1028px;
-    height: 1028px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
+    height:1028px;
+    width:512px;
+    position: relative;
+    top: -384px;
+   
     left: 0;
-    right: 0; image-rendering: pixelated; image-rendering: crisp-edges; z-index: -1;">
+    right: 0;z-index: -1;">
         </canvas>
 
         <script>
-        var c = document.getElementById("myCanvas");
+        var c = document.getElementById("grav");
         var ctx = c.getContext("2d");
         var timer = Math.random() * 25;
         ctx.CanvasImageSmoothing = false;
         ctx.translate(0.5, 0.5)
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = "white";
+            
 
         var then = 0;
         var time;
@@ -68,20 +69,31 @@
         function requestAnimFrame(time) {
         
         requestAnimationFrame(requestAnimFrame);
-        deltaTime = time - then; 
-
+        deltaTime = time - then;
+        
+            
         
         
 
         if ( deltaTime > 20) {
+            
             
             then = time - (deltaTime % 20);
 
             timer = timer + 0.01;
 
             ctx.beginPath();
+            c.width =  window.innerWidth  / 1;
+            c.style.width = 1 * window.innerWidth  / 1 + "px";
+            
+            ctx.strokeStyle = "white";
             ctx.lineJoin = "round";
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = "white";
+
             ctx.clearRect(0, 0, c.width, c.height);
+            
+            
             ctx.lineWidth = 5;
 
             ctx.moveTo(decalSize * Math.cos(timer) + c.width/2, decalSize * Math.sin(timer) + c.height/2);
@@ -106,6 +118,7 @@
             ctx.lineTo(decalSize * Math.cos(timer) + c.width/2, decalSize * Math.sin(timer) + c.height/2);
 
             ctx.strokeRect(c.width/2, c.height/2,1,1);
+            
 
          /*   var off = Math.sin(timer * 2.125) * 3;
             var off2 = Math.cos(timer * 1.25) * 3;
@@ -130,7 +143,7 @@
 
 
 
-            ctx.strokeStyle = "white";
+            
             ctx.stroke();
 
         }
@@ -142,23 +155,129 @@
         </script>
         
 
-        <aside><p style="color:white; text-align:center; position: relative;top: 1000; font-family:asap;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Gravity <a href="https://en.wikipedia.org/wiki/Kepler's_laws_of_planetary_motion#Position_as_a_function_of_time" style = "text-decoration:none;">"simulation"</a> using math from  <a href="https://deltav0.itch.io/kessler" style = "text-decoration:none;"> Kessler
+        <aside><p style="color:white; text-align:center; position: relative;top: -772px; font-family:asap;">Gravity <a href="https://en.wikipedia.org/wiki/Kepler's_laws_of_planetary_motion#Position_as_a_function_of_time" style = "text-decoration:none;">"simulation"</a> using math from  <a href="https://deltav0.itch.io/kessler" style = "text-decoration:none;"> Kessler
            </p>
             </a></aside>
         
-        <header><h1 style="color:white; text-align:center; font-size:250%; font-family:asap;"><br><strong>Bio:</strong></h1></header>
+        <header><h1 style="color:white; text-align:center; font-size:250%; font-family:asap;top: -772px;position: relative;"><br><strong>Bio:</strong></h1></header>
 
-         <aside><p style="color:white; text-align:center; position: relative;top: 1000; font-family:asap;">
-           <br> hi hello i'm delta (i might've been introduced under a different name, but i perfer delta)! i'm an "aspiring" game/software developer and i'm currently in college (also i'm nonbinary and une they/them please thank you)
-           <br> i initially started programming long ago in 2022 using <a href="https://snap.berkeley.edu/">SNAP</a> (a somewhat obscure scratch knockoff) for APCSP, getting two of my projects on the front page of the website
+         <aside><p style="color:white; text-align:center; position: relative;top: -772px; font-family:asap;">
+           hi hello i'm delta (i might've been introduced under a different name, but i perfer delta)! i'm an "aspiring" game/software developer and i'm currently in college (also i'm nonbinary and use they/them please thank you)
+           <br><br> i initially started programming long ago in 2022 using <a href="https://snap.berkeley.edu/">SNAP</a> (a somewhat obscure scratch knockoff) for APCSP, getting two of my projects on the front page of the website
            <br> in 2023, i began using <a href="https://snap.berkeley.edu/">Unity</a> (C#) instead, and i've developed several projects, publishing some on my itch.io (seen above)
            <br> i've also participated in several <a href="https://solodevelopment.org/jams">game jams</a> where i've fully developed and published projects over the course of just 72 hours
            <br> i know a couple of other (programming) languages too, like Java, python, JS, and HTML (obviously, i coded this website in HTML)
            <br> also also i NEVER use AI under any circumstances, all projects and assets used in my projects (including this here website) are 100% human made!!
-           <br> i work somewhat hard to keep my digital footprint "squeaky clean" so none of my socials contain any (unnessecary) political messaging
+           <br><br> i work somewhat hard to keep my digital footprint "squeaky clean" so none of my socials contain any (unnecessary) political messaging
            <br> there are some things that i'll post anyway, like my strong distain for (generative) AI, and my support for the queer community (it'd be silly for me not to) and also nuclear energy!!
            <br> anyway that's all i have to say, the rest of this site is just showcasing cool projects and random stuff
-           <br> if you want, you can message me on discord at deltav0_
+           <br> if you want, you can message me on discord at deltav0_ or email me at DeltaV8@outlook.com :D
+           </p>
+            </aside>
+
+        <canvas id="nation" width="2048" height="2048" style="
+    padding: 0;
+    margin: auto;
+    align-items: center;
+    text-align:center;
+    display: block;
+    height:1024px;
+    width:1024px;
+    position: relative;
+    top: -772px;
+   
+    left: 0;
+    right: 0;z-index: -1;">
+        </canvas>
+
+        <script>
+        var c2 = document.getElementById("nation");
+        var ctx2 = c2.getContext("2d");
+        var posx1 = [];
+        var posy1 = []; 
+            
+        ctx2.fillStyle = "0000ff";
+        for(let i = 0; i < 16; i++){
+            posx1[i] = Math.random() * 512 - 128 + 1024;
+            posy1[i] = Math.random() * 512 - 128 + 1024;
+        }
+         for(let i = 16; i < 32; i++){
+            var a  = Math.random() * 1/4 - 1/8 + 3/3;
+            posx1[i] = Math.random() * 256 - 128 + 1024 + Math.cos(2 * Math.PI * a) * 512;
+            posy1[i] = Math.random() * 256 - 128 + 1024 + Math.sin(2 * Math.PI * a) * 512;
+        } for(let i = 32; i < 32 + 16; i++){
+            var a  = Math.random() * 1/4 - 1/8 + 1/3;
+            posx1[i] = Math.random() * 256 - 128 + 1024 + Math.cos(2 * Math.PI * a) * 512;
+            posy1[i] = Math.random() * 256 - 128 + 1024 + Math.sin(2 * Math.PI * a) * 512;
+        }
+        for(let i = 32 + 16; i < 64; i++){
+            var a  = Math.random() * 1/4 - 1/8 + 2/3;
+            posx1[i] = Math.random() * 256 - 128 + 1024 + Math.cos(2 * Math.PI * a) * 512;
+            posy1[i] = Math.random() * 256 - 128 + 1024 + Math.sin(2 * Math.PI * a) * 512;
+        }
+
+        for(let i = 64; i < 64 + 32; i++){
+            var a  = Math.random();
+            posx1[i] = 1024 + Math.cos(2 * Math.PI * a) * 1024 / (Math.random() * 0.1 + 0.9);
+            posy1[i] = 1024 + Math.sin(2 * Math.PI * a) * 1024 / (Math.random() * 0.1 + 0.9);
+        }
+
+        
+        for(let x1 = 0; x1 < 512; x1++){
+            for(let y1 = 0; y1 < 512; y1++){
+                var min = ((Math.pow(0-(x1 * 8),2))+(Math.pow(0-(y1 * 8),2))) / 32 + 1024*Math.sin(Math.atan2((x1-256) * 8,(y1-256) * 8) * 16)*16;
+                var index = -100000000;
+                var positionalOffsetx = Math.sin(Math.atan2((x1-256) * 8,(y1-256) * 8) * 32)*16;
+                var positionalOffsety = Math.sin(Math.atan2((x1-256) * 8,(y1-256) * 8) * -32)*16;
+
+                ctx2.beginPath();
+                for(let i = 0; i < posx1.length; i++){
+                    if(0.25 * ((Math.pow((posx1[i] + positionalOffsetx)-(x1 * 8),2))+(Math.pow((posy1[i] + positionalOffsety)-(y1 * 8),2))) + 2 * (Math.max(Math.abs((posx1[i] + positionalOffsetx)-(x1 * 8)),Math.abs((posy1[i] + positionalOffsety)-(y1 * 8)))) < min){
+                        min = 0.25 * ((Math.pow((posx1[i] + positionalOffsetx)-(x1 * 8),2))+(Math.pow((posy1[i] + positionalOffsety)-(y1 * 8),2))) + 2 * (Math.max(Math.abs((posx1[i] + positionalOffsetx)-(x1 * 8)),Math.abs((posy1[i] + positionalOffsety)-(y1 * 8)))) ;
+                        
+                        index = i;
+                    }
+                }
+                if(index == -100000000){
+                    ctx2.fillStyle  = "#00000000";
+                } else if(index - 16 < 0){
+                    ctx2.fillStyle  = "#00aa00";
+                    if(min < 64 && index % 2 == 0){
+                        ctx2.fillStyle  = "black";
+                    }
+                } else if(index - 16 < 16){
+                    ctx2.fillStyle  = "#aa0000";
+                    if(min < 64 && index % 2 == 0){
+                        ctx2.fillStyle  = "black";
+                    }
+                } else if(index - 16 < 32){
+                    ctx2.fillStyle  = "#0000aa";
+                    if(min < 64 && index % 2 == 0){
+                        ctx2.fillStyle  = "black";
+                    }
+                } else if(index - 16 < 32 + 16){
+                    ctx2.fillStyle  = "#aaaa00";
+                    if(min < 64 && index % 2 == 0){
+                        ctx2.fillStyle  = "black";
+                    }
+                } else {
+                    ctx2.fillStyle  = "#00000000";
+                }
+               ctx2.fillRect(x1 * 8, y1 * 8,8,8); 
+               ctx2.stroke();
+            }
+        }
+        requestAnimationFrame(anim);
+
+        
+        function anim(time){
+           // c2.width = 2048;//window.innerWidth  / 2;
+          //  c2.style.width = 1 * window.innerWidth / 2 + "px";
+            requestAnimationFrame(anim);
+        }
+        </script>
+
+        <aside><p style="color:white; text-align:center; position: relative;top: -772px; font-family:asap;">VERY simplified implementation of a terrain generator on an unreleased project i'm working on (black dots are cities, nations are coloured respectively)
            </p>
             </aside>
 
