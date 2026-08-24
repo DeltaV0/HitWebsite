@@ -83,8 +83,8 @@
             timer = timer + 0.01;
 
             ctx.beginPath();
-            c.width =  window.innerWidth  / 1;
-            c.style.width = 1 * window.innerWidth  / 1 + "px";
+            c.width =  document.body.clientWidth  / 1;
+            c.style.width = 1 * document.body.clientWidth  / 1 + "px";
             
             ctx.strokeStyle = "white";
             ctx.lineJoin = "round";
@@ -276,8 +276,8 @@
         function anim(time){
             
            //var oldscale = c2.style.width.replace("px", "");
-            c2.style.width = 1 * window.innerWidth / 1 + "px";
-            c2.width = (window.innerWidth ) / (512/2048) / 1;
+            c2.style.width = 1 * document.body.clientWidth / 1 + "px";
+            c2.width = (document.body.clientWidth ) / (512/2048) / 1;
             //ctx2.scale(5, 1);
             ctx2.putImageData(img,c2.width/2 - img.width/2,0);
             requestAnimationFrame(anim);
