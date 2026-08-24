@@ -181,8 +181,8 @@
     align-items: center;
     text-align:center;
     display: block;
-    height:772px;
-    width:772px;
+    height:512px;
+    width:512px;
     position: relative;
     top: -772px;
    
@@ -195,6 +195,8 @@
         var ctx2 = c2.getContext("2d");
         var posx1 = [];
         var posy1 = []; 
+                //ctx2.translate(0.5, 0.5)
+
             
         ctx2.fillStyle = "0000ff";
         for(let i = 0; i < 16; i++){
@@ -267,12 +269,17 @@
                ctx2.stroke();
             }
         }
+        var img = ctx2.getImageData(-0,-0,2048,2048);
         requestAnimationFrame(anim);
 
         
         function anim(time){
-           // c2.width = 2048;//window.innerWidth  / 2;
-          //  c2.style.width = 1 * window.innerWidth / 2 + "px";
+            
+           //var oldscale = c2.style.width.replace("px", "");
+            c2.style.width = 1 * window.innerWidth / 1 + "px";
+            c2.width = (window.innerWidth ) / (512/2048) / 1;
+            //ctx2.scale(5, 1);
+            ctx2.putImageData(img,c2.width/2 - img.width/2,0);
             requestAnimationFrame(anim);
         }
         </script>
